@@ -5,7 +5,8 @@ const getUserChoice = (userInput) => {
   if (
     userInput === "rock" ||
     userInput === "paper" ||
-    userInput === "scissors"
+    userInput === "scissors" ||
+    userInput === "bomb"
   ) {
     return userInput;
   } else {
@@ -32,6 +33,9 @@ const getComputerChoice = () => {
 
 let determineWinner = (userChoice, computerChoice) => {
   //determining if the user or computer won or if there was a tie
+  if (userChoice === "bomb") {
+    return "BOMB! You win!";
+  }
   if (userChoice === computerChoice) {
     return "It's a tie!";
   }
@@ -62,7 +66,7 @@ let determineWinner = (userChoice, computerChoice) => {
 };
 
 const playGame = () => {
-  const userChoice = getUserChoice("rock");
+  const userChoice = getUserChoice("bomb");
   const computerChoice = getComputerChoice();
   console.log("You threw: " + userChoice);
   console.log("The computer threw: " + computerChoice);
